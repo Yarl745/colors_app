@@ -1,3 +1,4 @@
+import 'package:colors_app/core/extensions/color_ext.dart';
 import 'package:colors_app/domain/repositories/color_generator_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
@@ -15,16 +16,13 @@ abstract class RandomColorPageViewModelBase with Store {
   @observable
   Color _dynamicBgColor = Colors.black;
 
-  @observable
-  Color _contrastTextColor = Colors.white;
-
   /// Computed property to get the current background color.
   @computed
   Color get dynamicBgColor => _dynamicBgColor;
 
   /// Computed property to get the current contrast text color.
   @computed
-  Color get contrastTextColor => _contrastTextColor;
+  Color get contrastTextColor => _dynamicBgColor.contrast;
 
   /// Constructor requiring a [ColorGeneratorRepository].
   RandomColorPageViewModelBase({
@@ -41,10 +39,6 @@ abstract class RandomColorPageViewModelBase with Store {
     _colorGeneratorRepository.generateRandomColor().fold(
           (_) => null, // Do nothing on failure.
           (color) => _dynamicBgColor = color, // Update on success.
-        );
-    _colorGeneratorRepository.getContrastColor().fold(
-          (_) => null, // Do nothing on failure.
-          (color) => _contrastTextColor = color, // Update  on success.
         );
   }
 }

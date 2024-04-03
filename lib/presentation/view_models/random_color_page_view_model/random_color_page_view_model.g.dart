@@ -40,23 +40,6 @@ mixin _$RandomColorPageViewModel on RandomColorPageViewModelBase, Store {
     });
   }
 
-  late final _$_contrastTextColorAtom = Atom(
-      name: 'RandomColorPageViewModelBase._contrastTextColor',
-      context: context);
-
-  @override
-  Color get _contrastTextColor {
-    _$_contrastTextColorAtom.reportRead();
-    return super._contrastTextColor;
-  }
-
-  @override
-  set _contrastTextColor(Color value) {
-    _$_contrastTextColorAtom.reportWrite(value, super._contrastTextColor, () {
-      super._contrastTextColor = value;
-    });
-  }
-
   @override
   String toString() {
     return '''

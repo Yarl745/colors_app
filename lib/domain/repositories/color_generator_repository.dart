@@ -7,8 +7,4 @@ abstract class ColorGeneratorRepository {
   /// Generates a random color and handles potential errors.
   /// Returns either a Failure or a generated Color.
   Either<Failure, Color> generateRandomColor();
-
-  /// Generates a contrast color based on current conditions.
-  /// Returns either a Failure or a contrast Color.
-  Either<Failure, Color> getContrastColor();
 }
